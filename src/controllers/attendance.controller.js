@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
         if (error) {
             return res.send(500).json("Error");
         }
-        res.json({ history });
+        res.json(history);
     });
 }
 
@@ -15,9 +15,9 @@ const getById = async (req, res) => {
             return res.send(500).json("Error");
         }
         if (!userHistory) {
-            return res.status(404).json("User history can not found");
+            return res.json({})
         }
-        res.json({ userHistory });
+        res.json(userHistory);
     }).sort({ _id: -1 });
 }
 
@@ -33,7 +33,7 @@ const create = async (req, res) => {
         if (error) {
             throw error;
         }
-        res.json({ userHistory });
+        res.json(userHistory);
     })
 }
 
